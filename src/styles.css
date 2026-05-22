@@ -1,3 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@theme {
+  --color-primary: #76B6C4;
+  --color-secondary: #AFDFC0;
+
+  --color-background: #EAE7DB;
+  --color-surface: #8FD6CA;
+
+  --color-text-black: #3A3C3C;
+  --color-text-white: #E0E9E9;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+* {
+  font-family: 'Estedad', sans-serif;
+}
