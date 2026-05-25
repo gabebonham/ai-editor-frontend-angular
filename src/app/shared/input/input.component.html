@@ -1,0 +1,22 @@
+<div
+    class="relative flex items-center border-b-2 border-text-black/20 group focus-within:border-b-primary transition-colors duration-300">
+
+    <!-- underline animada -->
+    <span
+        class="absolute left-0 -bottom-[2px] h-[1.5px] w-full bg-primary scale-x-0 origin-left transition-transform duration-300 group-focus-within:scale-x-100"></span>
+
+    @if (icon){
+    <mat-icon class="!text-text-black mr-2">
+        {{ icon }}
+    </mat-icon>
+    }
+
+    <input [type]="getType()" [placeholder]="placeholder"
+        class="w-full h-10 px-2 py-2 bg-transparent border-0 focus:outline-none focus:ring-0" [value]="value"
+        [disabled]="isDisabled" (input)="onInput($event)" (blur)="onTouched()" />
+
+    <mat-icon (click)="toggleVisible()" *ngIf="canToggleVisible" class="!text-text-black cursor-pointer">
+        {{ visible ? 'visibility_off' : 'visibility' }}
+    </mat-icon>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="bg-white p-5 shadow-md rounded-2xl flex flex-col gap-4 border-2 border-text-black/20">
+  <div>
+    <h2 class="text-lg font-bold text-text-black mb-2">Instruções para o Claude (CLAUDE.md)</h2>
+    <p class="text-text-black/80">Suba um <code>CLAUDE.md</code> para configurar as instruções do Claude para cada prompt.</p>
+    <p>Tamanho Máximo: 500 KB.</p>
+  </div>
+  <div class="flex justify-between">
+    <input type="file" accept=".md" class="hidden" id="claudeMdInput" (change)="onFileSelected($event)">
+    <label for="claudeMdInput" class="cursor-pointer px-4 py-2 bg-primary text-text-white rounded-lg">Selecionar arquivo .md</label>
+  </div>
+</div>

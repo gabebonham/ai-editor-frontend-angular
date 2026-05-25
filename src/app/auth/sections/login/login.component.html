@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-16">
+    <div class="flex flex-col gap-4">
+        <div>
+            <h1>Email</h1>
+            <app-input id="email" type="email" formControlName="email" [class.error]="email.invalid && email.touched"
+                icon="email" placeholder="Seu email..."></app-input>
+            <span class="text-red-500" *ngIf="email.touched && email.hasError('required')">
+                Email obrigatório
+            </span>
+            <span class="text-red-500" *ngIf="email.touched && email.hasError('email')">
+                Email inválido
+            </span>
+        </div>
+        <div>
+            <h1>Senha</h1>
+            <app-input id="password" type="password" formControlName="password"
+                [class.error]="password.invalid && password.touched" icon="lock" [canToggleVisible]="true" type="text"
+                placeholder="Sua senha..."></app-input>
+            <span class="text-red-500" *ngIf="password.touched && password.hasError('required')">
+                Senha obrigatória
+            </span>
+            <span class="text-red-500" *ngIf="password.touched && password.hasError('minlength')">
+                Senha deve ter pelo menos 6 caracteres
+            </span>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="cursor-pointer w-full text-lg px-4 py-2 bg-primary text-text-white rounded-lg">
+            {{ loading ? 'Entrando...' : 'Entrar' }}
+        </button>
+    </div>
+</form >

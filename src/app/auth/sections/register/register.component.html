@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-16">
+    <div class="flex flex-col gap-4">
+        <div>
+            <h1>Email</h1>
+            <app-input icon="email" type="text" placeholder="Seu email..."></app-input>
+        </div>
+        <div>
+            <h1>Senha</h1>
+            <app-input icon="lock" [canToggleVisible]="true" type="text" placeholder="Sua senha..."></app-input>
+        </div>
+        <div>
+            <h1>Confirmar Senha</h1>
+            <app-input icon="lock" [canToggleVisible]="true" type="text" placeholder="Confirme sua senha..."></app-input>
+        </div>
+    </div>
+    <div>
+        <button class="cursor-pointer w-full text-lg px-4 py-2 bg-primary text-text-white rounded-lg">
+            Cadastrar
+        </button>
+    </div>
+</div>
