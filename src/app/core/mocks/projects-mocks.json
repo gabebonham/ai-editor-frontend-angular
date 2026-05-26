@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "name": "E-commerce Platform",
+        "owner": "grotegabriel",
+        "repoLink": "https://github.com/grote/ecommerce-platform",
+        "widgetInjected": true,
+        "createdAt": "2024-01-15T10:00:00.000Z"
+    },
+    {
+        "id": "2",
+        "name": "AI Dashboard",
+        "owner": "grotegabriel",
+
+        "repoLink": "https://github.com/grote/ai-dashboard",
+        "widgetInjected": false,
+        "createdAt": "2024-02-20T14:30:00.000Z"
+    },
+    {
+        "id": "3",
+        "name": "Blog Pessoal",
+        "owner": "grotegabriel",
+
+        "repoLink": "https://github.com/grote/blog",
+        "widgetInjected": true,
+        "createdAt": "2024-03-05T09:15:00.000Z"
+    },
+    {
+        "id": "4",
+        "name": "SaaS Landing Page",
+        "owner": "grotegabriel",
+
+        "repoLink": "https://github.com/grote/saas-landing",
+        "widgetInjected": false,
+        "createdAt": "2024-04-10T16:45:00.000Z"
+    },
+    {
+        "id": "5",
+        "name": "Mobile App API",
+        "owner": "grotegabriel",
+
+        "repoLink": "https://github.com/grote/mobile-api",
+        "widgetInjected": true,
+        "createdAt": "2024-05-22T11:00:00.000Z"
+    }
+]

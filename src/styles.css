@@ -23,3 +23,6 @@ input:-webkit-autofill:focus {
 * {
   font-family: 'Estedad', sans-serif;
 }
+.p-drawer {
+    background-color: var(--color-background) !important;
+}

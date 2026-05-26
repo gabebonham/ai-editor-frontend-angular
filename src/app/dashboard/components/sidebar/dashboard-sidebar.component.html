@@ -1,4 +1,31 @@
-<p-drawer [(visible)]="isDrawerVisible" appendTo="body" (onHide)="onDrawerHide()">
-  <!-- Drawer content -->
+<p-drawer class="bg-background" [(visible)]="isDrawerVisible" appendTo="body" (onHide)="onDrawerHide()"
+    [closable]="false">
+    <div class="flex flex-col justify-between h-full">
+        <div class="flex flex-col gap-4">
+            @for (item of getMenuItems(); track $index) {
+            <a [routerLink]="item.path" class='flex items-center gap-2 rounded-tr-lg rounded-br-lg border-l-3 px-2 py-2'
+                [style.background-color]="item.selected?'#ef444415':'#ef444400'"
+                [style.border-color]="item.selected?'#ef4444':'#ef444400'">
+                <mat-icon style="font-size: 20px; color: var(--text-black); opacity: 0.6;"
+                    [fontSet]="true ? 'material-icons-outlined' : 'material-icons'"
+                    [style.color]="item.selected?'#ef4444':'#3A3C3C'">
+                    {{ item.icon }}
+                </mat-icon>
+                <p class="text-lg text-text-black/70" [style.color]="item.selected?'#ef4444':'#3A3C3C'">{{ item.title }}
+                </p>
+            </a>
+            }
+        </div>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div [style.background-color]="avatarColor"
+                    class="rounded-full w-10 h-10 flex items-center justify-center">{{ getInitials() }}</div>
+                <p>{{ email }}</p>
+            </div>
+            <mat-icon class="cursor-pointer" style="font-size: 20px; color: var(--text-black); opacity: 0.6;"
+                [fontSet]="true ? 'material-icons-outlined' : 'material-icons'">exit_to_app</mat-icon>
+        </div>
+
+    </div>
 </p-drawer>
-<button (click)="isDrawerVisible = true">Open Drawer</button>
+<button (click)="isDrawerVisible = true" class="cursor-pointer text-text-black"><mat-icon>menu</mat-icon></button>

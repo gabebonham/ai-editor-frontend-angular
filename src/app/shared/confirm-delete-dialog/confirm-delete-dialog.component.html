@@ -1,0 +1,18 @@
+<p-dialog [(visible)]="isModalVisible" [modal]="true" [header]="title">
+    <div>
+        <p>{{description}}</p>
+    </div>
+    <ng-template pTemplate="footer">
+        <button class=" w-28 h-9 rounded-lg text-text-black" (click)="isModalVisible = false">Cancelar</button>
+        <button class="bg-primary w-28 h-9 rounded-lg text-text-white" (click)="confirm()">Confirmar</button>
+    </ng-template>
+</p-dialog>
+<button class="bg-primary flex items-center gap-2" [style.background-color]="btnColor" [style.color]="btnTextColor"
+    (click)="isModalVisible = true">
+    @if (btnIcon) {
+        <mat-icon>{{btnIcon}}</mat-icon>
+    }
+    @if (btnLabel) {
+        <p>{{btnLabel}}</p>
+    }
+</button>

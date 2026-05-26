@@ -1,0 +1,8 @@
+<div class="h-screen">
+    <div>
+        <app-create-project (createdProject)="onProjectCreated($event)"></app-create-project>
+    </div>
+    <div>
+        <app-projects-display [projects]="projects"/>
+    </div>
+</div>

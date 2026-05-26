@@ -1,0 +1,40 @@
+<div class="bg-white flex flex-col border-2 border-text-black/10 shadow-md rounded-xl">
+    <div class="flex items-center justify-between border-b-2 border-b-text-black/20 p-5">
+        <div class="flex items-center gap-3">
+            <div class="rounded-lg bg-primary text-text-white w-9 h-9 flex items-center justify-center">
+                <mat-icon>language</mat-icon>
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-md text-text-black font-semibold">{{ project?.name }}</h1>
+                <p class="text-text-black/80">{{ project?.owner }}</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <p class="text-xs text-text-black/50">{{ project?.createdAt }} </p>
+            <app-confirm-delete-dialog (onDelete)="deleteProject(project?.id)" [projectId]="'123'" [btnIcon]="'delete_outline'" [btnTextColor]="'#ef4444'"
+                [title]="'Deletar Projeto'" [description]="'Tem certeza que deseja deletar esse projeto?'"
+                [btnColor]="'#ef444400'" />
+        </div>
+    </div>
+    <div class="bg-gray-background">
+        <div class="flex items-center justify-between px-5 py-3 ">
+            <a [href]="project?.repoLink" target="_blank" class="flex items-center gap-2 text-primary">
+                Abrir Repositório
+                <mat-icon
+                    style="font-size: 18px; width: 18px; height: 18px; color: var(--color-primary);">open_in_new</mat-icon>
+            </a>
+
+            @if (project?.widgetInjected) {
+            <div class="flex items-center gap-2">
+                <mat-icon fontSet="material-icons-outlined"
+                    style="font-size: 18px; width: 18px; height: 18px; color: var(--color-primary);">check_circle</mat-icon>
+                <p class="text-primary">Widget injetada</p>
+            </div>
+            } @else {
+            <div>
+                <p class="text-red-500">Widget não injetada</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>
