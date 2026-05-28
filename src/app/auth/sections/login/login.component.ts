@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { InputComponent } from '../../../shared/input/input.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class LoginComponent {
   form: FormGroup;
   loading = false;
   serverError = '';
+  private platformId = inject(PLATFORM_ID);
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -39,7 +40,7 @@ export class LoginComponent {
     try {
       this.authService.login(this.form.value.email, this.form.value.password).subscribe({
         next: (res) => {
-        if (res.success) {
+        if (res.success&&isPlatformBrowser(this.platformId)) {
           localStorage.setItem('token', res.data.access_token);
           this.router.navigate(['/dashboard/projects']);
         }

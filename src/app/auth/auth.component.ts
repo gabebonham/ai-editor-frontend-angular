@@ -1,7 +1,6 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { InputComponent } from '../shared/input/input.component';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LoginComponent } from './sections/login/login.component';
 import { ForgotPasswordComponent } from './sections/forgot-password/forgot-password.component';
 import { RegisterComponent } from './sections/register/register.component';
@@ -10,13 +9,14 @@ type AuthSection = 'Login' | 'Cadastro' | 'Esqueci minha senha';
 
 @Component({
   selector: 'app-auth',
-  imports: [ InputComponent, CommonModule, LoginComponent, RegisterComponent, ForgotPasswordComponent],
+  imports: [ CommonModule, LoginComponent, RegisterComponent, ForgotPasswordComponent],
   templateUrl: './auth.component.html',
 })
 export class AuthComponent implements OnInit {
+    private platformId = inject(PLATFORM_ID);
     constructor(private router:Router){}
     ngOnInit(): void {
-        if (localStorage.getItem('token')) {
+        if (isPlatformBrowser(this.platformId)&&localStorage.getItem('token')) {
             this.router.navigate(['/dashboard/projects']);
         }
     }

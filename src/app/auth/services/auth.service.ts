@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.dev';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class AuthService {
   login(email: string, password: string): Observable<any>{
     return this.http.post(this.PATH + '/login', { email, password });
   }
-  register(email: string, password: string, username:string): Observable<any> {
+  register(email: string, password: string, confirmPassword: string,username:string): Observable<any> {
+    if (password!==confirmPassword) return of({success:false, message:'Senhas são diferentes.'}); 
     return this.http.post(this.PATH + '/register', { email, password, username });
   }
   logout(): void {

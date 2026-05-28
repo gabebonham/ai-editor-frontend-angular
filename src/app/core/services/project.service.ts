@@ -17,8 +17,17 @@ export class ProjectsService {
         }));
         return of(projects);
     }
+    getProject(id:string): Observable<Project> {
+        const projects = (projectsJson as any[]).map(p => ({
+            ...p,
+            createdAt: (new Date(p.createdAt)).toLocaleDateString('pt-BR')
+        }));
+        const project = projects.find(proj=>proj.id==id);
+        return of(project);
+    }
     createProject(project: Partial<Project>): Observable<Project> {
         return of({
+            html:'',
             name: project.name!,
             owner: project.owner!,
             repoLink: project.repoLink!,

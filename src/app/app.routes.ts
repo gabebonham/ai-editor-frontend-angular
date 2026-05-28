@@ -22,7 +22,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'playground',
+        path: 'playground/:id',
         component: PlaygroundComponent,
     },
 ];

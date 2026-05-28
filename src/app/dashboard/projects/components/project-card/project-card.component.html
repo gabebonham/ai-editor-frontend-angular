@@ -5,11 +5,11 @@
                 <mat-icon>language</mat-icon>
             </div>
             <div class="flex flex-col">
-                <h1 class="text-md text-text-black font-semibold">{{ project?.name }}</h1>
-                <p class="text-text-black/80">{{ project?.owner }}</p>
+                <h1 class="text-sm text-text-black font-semibold">{{ projectName }}</h1>
+                <p class="text-text-black/80 text-xs">{{ project?.owner }}</p>
             </div>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1">
             <p class="text-xs text-text-black/50">{{ project?.createdAt }} </p>
             <app-confirm-delete-dialog (onDelete)="deleteProject(project?.id)" [projectId]="'123'" [btnIcon]="'delete_outline'" [btnTextColor]="'#ef4444'"
                 [title]="'Deletar Projeto'" [description]="'Tem certeza que deseja deletar esse projeto?'"
@@ -17,24 +17,29 @@
         </div>
     </div>
     <div class="bg-gray-background">
-        <div class="flex items-center justify-between px-5 py-3 ">
-            <a [href]="project?.repoLink" target="_blank" class="flex items-center gap-2 text-primary">
+        <div class="flex items-center text-xs justify-center px-5 py-3 ">
+            <!-- <a [href]="project?.repoLink" target="_blank" class="flex items-center gap-2 text-primary">
                 Abrir Repositório
                 <mat-icon
-                    style="font-size: 18px; width: 18px; height: 18px; color: var(--color-primary);">open_in_new</mat-icon>
-            </a>
+                    style="font-size: 12px; width: 14px; height: 14px; color: var(--color-primary);">open_in_new</mat-icon>
+            </a> -->
 
-            @if (project?.widgetInjected) {
-            <div class="flex items-center gap-2">
+            <!-- @if (isInjected) {
+            <div class="flex items-center gap-1" (click)="toggleWidgetInjected()">
                 <mat-icon fontSet="material-icons-outlined"
-                    style="font-size: 18px; width: 18px; height: 18px; color: var(--color-primary);">check_circle</mat-icon>
+                    style="font-size: 12px; width: 14px; height: 14px; color: var(--color-primary);">check_circle</mat-icon>
                 <p class="text-primary">Widget injetada</p>
             </div>
             } @else {
-            <div>
+            <div (click)="toggleWidgetInjected()">
                 <p class="text-red-500">Widget não injetada</p>
             </div>
-            }
+            } -->
+            <a [href]="'/playground/'+project?.id" target="_blank" class="flex items-center gap-2 text-primary font-semibold">
+                Abrir Playground
+                <mat-icon
+                    style="font-size: 14px; width: 14px; height: 14px; color: var(--color-primary);">open_in_new</mat-icon>
+            </a>
         </div>
     </div>
 </div>
