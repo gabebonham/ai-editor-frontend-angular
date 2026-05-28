@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { DashboardHeaderComponent } from './components/header/dashboard-header.component';
@@ -9,6 +9,11 @@ import { DashboardHeaderComponent } from './components/header/dashboard-header.c
   templateUrl: './dashboard-layout.component.html',
     standalone: true,
 })
-export class DashboardLayoutComponent  {
-
+export class DashboardLayoutComponent implements OnInit {
+    constructor(private router:Router){}
+    ngOnInit(): void {
+        if (!localStorage.getItem('token')) {
+            this.router.navigate(['/auth']);
+        }
+    }
 }

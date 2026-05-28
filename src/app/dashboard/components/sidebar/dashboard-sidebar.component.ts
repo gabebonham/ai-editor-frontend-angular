@@ -74,5 +74,9 @@ export class DashboardSidebarComponent implements OnInit {
         }
         return colors[this.getColor()];
     }
+    logout() {
+        localStorage.removeItem('token');
+        this.router.navigate(['/auth'])
+    }
 
 }

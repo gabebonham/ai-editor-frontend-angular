@@ -22,7 +22,7 @@
                     class="rounded-full w-10 h-10 flex items-center justify-center">{{ getInitials() }}</div>
                 <p>{{ email }}</p>
             </div>
-            <mat-icon class="cursor-pointer" style="font-size: 20px; color: var(--text-black); opacity: 0.6;"
+            <mat-icon (click)="logout()" class="cursor-pointer" style="font-size: 20px; color: var(--text-black); opacity: 0.6;"
                 [fontSet]="true ? 'material-icons-outlined' : 'material-icons'">exit_to_app</mat-icon>
         </div>
 

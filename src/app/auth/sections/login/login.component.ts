@@ -14,7 +14,11 @@ export class LoginComponent {
   form: FormGroup;
   loading = false;
   serverError = '';
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -33,7 +37,13 @@ export class LoginComponent {
     this.serverError = '';
 
     try {
-      await this.authService.login(this.form.value.email, this.form.value.password);
+      this.authService.login(this.form.value.email, this.form.value.password).subscribe({
+        next: (res) => {
+        if (res.success) {
+          localStorage.setItem('token', res.data.access_token);
+          this.router.navigate(['/dashboard/projects']);
+        }
+      },});
       this.router.navigate(['/dashboard']);
     } catch (err) {
       this.serverError = 'Email ou senha inválidos.';

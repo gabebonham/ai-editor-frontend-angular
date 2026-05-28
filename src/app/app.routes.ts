@@ -3,6 +3,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ConfigurationsComponent } from './dashboard/configurations/configurations.component';
 import { DashboardLayoutComponent } from './dashboard/dashboard-layout.component';
 import { ProjectsComponent } from './dashboard/projects/projects.component';
+import { PlaygroundComponent } from './playground/playground.component';
 
 export const routes: Routes = [
     
@@ -19,5 +20,9 @@ export const routes: Routes = [
             { path: 'projects', component: ProjectsComponent },
             { path: '', redirectTo: 'projects', pathMatch: 'full' }
         ]
+    },
+    {
+        path: 'playground',
+        component: PlaygroundComponent,
     },
 ];

@@ -1,0 +1,10 @@
+<main class="h-screen overflow-hidden">
+  <iframe 
+    id="sandbox"
+    class="w-full h-screen border-none">
+  </iframe>
+  <app-floating-chat
+    (promptSubmit)="sendPrompt($event)"
+    #floatingChat>
+  </app-floating-chat>
+</main>

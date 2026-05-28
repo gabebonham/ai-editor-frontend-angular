@@ -7,9 +7,9 @@
         <div class="flex items-end gap-x-4">
             @for (section of sections; track section){
                 @if (currentSection === section){
-                    <h1 class="text-2xl text-primary underline">{{ section }}</h1>
+                    <h1 class="text-md text-primary underline">{{ section }}</h1>
                 } @else {
-                    <h1 (click)="switchSection(section)" class="text-2xl text-text-black cursor-pointer">{{ section }}</h1>
+                    <h1 (click)="switchSection(section)" class="text-md text-text-black cursor-pointer">{{ section }}</h1>
                 }
             }
         </div>
