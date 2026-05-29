@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="isModalVisible" [modal]="true" [header]="title" [style]="{ width: '90%'}" >
+<p-dialog [(visible)]="isModalVisible" [modal]="true" [header]="title" [style]="{ width: '90%'}">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-16 w-full">
         <div>
             <h1>Nome</h1>
@@ -9,22 +9,11 @@
             </span>
         </div>
         <div>
-            <h1>Link do Repositório</h1>
-            <app-input id="repoLink" type="repoLink" formControlName="repoLink"
-                [class.error]="repoLink.invalid && repoLink.touched" icon="repoLink"
-                placeholder="Link do Repositório..."></app-input>
-            <span class="text-red-500" *ngIf="repoLink.touched && repoLink.hasError('required')">
-                Link do Repositório é obrigatório
-            </span>
+            <h1>Descrição (Opcional)</h1>
+            <app-input id="description" type="description" formControlName="description" icon="description"
+                placeholder="Descrição do projeto..."></app-input>
         </div>
-        <div>
-            <h1>Dono do Repositório</h1>
-            <app-input id="owner" type="owner" formControlName="owner" [class.error]="owner.invalid && owner.touched"
-                icon="owner" placeholder="Dono do Repositório..."></app-input>
-            <span class="text-red-500" *ngIf="owner.touched && owner.hasError('required')">
-                Dono do Repositório é obrigatório
-            </span>
-        </div>
+
     </form>
 
     <ng-template pTemplate="footer">
@@ -35,4 +24,4 @@
 <button (click)="isModalVisible = true"
     class="bg-secondary flex items-center w-fit min-w-42 justify-center  text-white rounded-lg h-9 gap-2"><mat-icon
         style="font-size: 18px; width: 16px; height: 16px;">add</mat-icon><span class="text-md">Novo
-        Projeto</span></button>  
+        Projeto</span></button>

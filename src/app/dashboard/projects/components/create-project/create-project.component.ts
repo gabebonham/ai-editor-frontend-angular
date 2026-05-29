@@ -10,7 +10,7 @@ import { Project } from '../../../../core/models/project.model';
 })
 export class CreateProjectComponent {
   @Output() createdProject = new EventEmitter<Project>();
-  onProjectCreated(project: Project) {
+  onProjectCreated(project: any) {
     this.createdProject.emit(project);
   }
 }

@@ -8,6 +8,7 @@ import { InputComponent } from '../../../../shared/input/input.component';
   templateUrl: './claude-md-card.component.html',
 })
 export class ClaudeMdCardComponent  {
+  @Input() mdFileUrl?:string
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {

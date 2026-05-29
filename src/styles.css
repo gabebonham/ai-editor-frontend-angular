@@ -4,9 +4,9 @@
 
 @theme {
   --color-primary: #76B6C4;
-  --color-secondary: #96D79B;
+  --color-secondary: #97CA9C;
 
-  --color-background: #EAE7DB;
+  --color-background: #ECEAE3;
   --color-surface: #8FD6CA;
 
   --color-text-black: #3A3C3C;
@@ -23,6 +23,18 @@ input:-webkit-autofill:focus {
 * {
   font-family: 'Inter', sans-serif;
 }
+app-dashboard-sidemenu {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}
+html, body, app-root {
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  display: block;
+}
 .p-drawer {
     background-color: var(--color-background) !important;
 }
@@ -31,4 +43,25 @@ input:-webkit-autofill:focus {
   transform: translateX(-50%) !important;
   width: 90vw !important;
   max-width: 360px !important;
+}
+/* app.component.css */
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--color-background);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

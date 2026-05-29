@@ -5,6 +5,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "resolveJsonModule": true,
+    "moduleResolution": "bundler", // ou "node16"
+    "esModuleInterop": true,
     "types": [
       "vitest/globals"
     ]

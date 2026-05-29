@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -14,21 +14,19 @@ import { DialogModule } from 'primeng/dialog';
     templateUrl: './create-project-dialog.component.html',
 })
 export class CreateProjectDialogComponent {
-    isModalVisible:boolean = false;
+    isModalVisible: boolean = false;
     form: FormGroup;
     loading = false;
     serverError = '';
     title = 'Criar Projeto';
-    constructor(private fb: FormBuilder, private router: Router, private projectService: ProjectsService) {
+    constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private projectService: ProjectsService) {
         this.form = this.fb.group({
             name: ['', [Validators.required]],
-            owner: ['', [Validators.required]],
-            repoLink: ['', [Validators.required]]
+            description: ['', ],
         });
     }
     get name() { return this.form.get('name')!; }
-    get repoLink() { return this.form.get('repoLink')!; }
-    get owner() { return this.form.get('owner')!; }
+    get description() { return this.form.get('description')!; }
     @Output() createdProject = new EventEmitter<Project>();
     onSubmit() {
         if (this.form.invalid) {
@@ -37,17 +35,17 @@ export class CreateProjectDialogComponent {
         }
 
         this.loading = true;
-        this.serverError = '';
         const projectDto = {
             name: this.form.value.name,
-            repoLink: this.form.value.repoLink,
-            owner: this.form.value.owner,
+            description: this.form.value.description,
         };
         this.projectService.createProject(projectDto).subscribe({
-            next: (res: Project) => {
-                this.createdProject.emit(res);
+            next: (res: any) => {
+                this.isModalVisible = false;      // <- fecha o dialog primeiro
+                this.cdr.detectChanges();         // <- força o Angular a processar o fechamento
+                this.createdProject.emit(res.data); // <- só então emite pro pai
                 this.loading = false;
-                this.isModalVisible = false;
+                this.form.reset();
             },
             error: () => {
                 this.serverError = 'Dados inválidos.';

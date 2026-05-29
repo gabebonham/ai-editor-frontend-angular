@@ -1,6 +1,5 @@
-<p-drawer styleClass="" [(visible)]="isDrawerVisible" appendTo="body" (onHide)="onDrawerHide()"
-    [closable]="false">
-    <div class="flex flex-col justify-between h-full">
+<div class="w-full bg-background flex flex-col flex-1 justify-between">
+    <div class="flex flex-col justify-between">
         <div class="flex flex-col gap-4">
             @for (item of getMenuItems(); track $index) {
             <a [routerLink]="item.path" class='flex items-center gap-2 rounded-tr-lg rounded-br-lg border-l-3 px-2 py-2'
@@ -27,5 +26,4 @@
         </div>
 
     </div>
-</p-drawer>
-<button (click)="isDrawerVisible = true" class="cursor-pointer text-text-black"><mat-icon>menu</mat-icon></button>
+</div>

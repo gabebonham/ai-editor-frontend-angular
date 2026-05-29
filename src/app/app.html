@@ -1,3 +1,9 @@
-<main class="main">
-    <router-outlet></router-outlet>
-</main>
+@if (authService.isLoading()) {
+  <div class="loading-screen">
+    <div class="spinner"></div>
+  </div>
+} @else {
+  <main class="main">
+    <router-outlet />
+  </main>
+}

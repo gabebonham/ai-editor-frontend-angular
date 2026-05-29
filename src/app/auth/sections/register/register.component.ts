@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/input/input.component';
 import { ToastModule } from 'primeng/toast';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
@@ -11,7 +11,6 @@ import { MessageService } from 'primeng/api';
   selector: 'app-register',
   imports: [InputComponent, CommonModule, ToastModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  providers: [MessageService]
 })
 export class RegisterComponent {
   form: FormGroup;
@@ -59,7 +58,7 @@ export class RegisterComponent {
       next: (res) => {
         if (res.success) {
           this.showToast('info', 'Sucesso', 'Cadastro realizado com sucesso.');
-          setTimeout(() => this.router.navigate(['/dashboard']), 1500); // aguarda o toast
+          setTimeout(() => this.router.navigate(['/auth']), 1500); // aguarda o toast
         } else {
           this.showToast('error', 'Erro', res.message);
           this.loading = false;

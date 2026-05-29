@@ -4,6 +4,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "moduleResolution": "bundler", // ou "node16"
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": [
       "node"

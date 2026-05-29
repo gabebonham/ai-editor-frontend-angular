@@ -10,14 +10,14 @@
             </div>
         </div>
         <div class="flex items-center gap-1">
-            <p class="text-xs text-text-black/50">{{ project?.createdAt }} </p>
-            <app-confirm-delete-dialog (onDelete)="deleteProject(project?.id)" [projectId]="'123'" [btnIcon]="'delete_outline'" [btnTextColor]="'#ef4444'"
-                [title]="'Deletar Projeto'" [description]="'Tem certeza que deseja deletar esse projeto?'"
-                [btnColor]="'#ef444400'" />
+            <p class="text-xs text-text-black/50">{{ project?.createdAt | date:'dd/MM/yyyy' }} </p>
+            <app-confirm-delete-dialog (onDelete)="deleteProject(project?.id)" [projectId]="'123'"
+                [btnIcon]="'delete_outline'" [btnTextColor]="'#ef4444'" [title]="'Deletar Projeto'"
+                [description]="'Tem certeza que deseja deletar esse projeto?'" [btnColor]="'#ef444400'" />
         </div>
     </div>
     <div class="bg-gray-background">
-        <div class="flex items-center text-xs justify-center px-5 py-3 ">
+        <div class="flex items-center text-xs justify-between px-5 py-3 ">
             <!-- <a [href]="project?.repoLink" target="_blank" class="flex items-center gap-2 text-primary">
                 Abrir Repositório
                 <mat-icon
@@ -35,11 +35,28 @@
                 <p class="text-red-500">Widget não injetada</p>
             </div>
             } -->
-            <a [href]="'/playground/'+project?.id" target="_blank" class="flex items-center gap-2 text-primary font-semibold">
+            <a [href]="'/playground/'+project?.id" target="_blank"
+                class="flex items-center gap-2 text-primary font-semibold">
                 Abrir Playground
                 <mat-icon
                     style="font-size: 14px; width: 14px; height: 14px; color: var(--color-primary);">open_in_new</mat-icon>
             </a>
+            <div class="flex justify-between">
+                <input type="file" accept=".md" class="hidden" [id]="'claudeMdInput-' + project?.id"
+                    (change)="onFileSelected($event)">
+
+                @if (mdFileUrl()) {
+                <label [for]="'claudeMdInput-' + project?.id"
+                    class="cursor-pointer px-4 py-2 bg-primary text-text-white rounded-lg">
+                    Editar .md
+                </label>
+                } @else {
+                <label [for]="'claudeMdInput-' + project?.id"
+                    class="cursor-pointer px-4 py-2 bg-primary text-text-white rounded-lg">
+                    Add .md
+                </label>
+                }
+            </div>
         </div>
     </div>
 </div>

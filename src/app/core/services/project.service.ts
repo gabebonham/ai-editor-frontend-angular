@@ -3,37 +3,36 @@ import { HttpClient } from '@angular/common/http';
 import { Project } from '../models/project.model';
 import projectsJson from '../mocks/projects-mocks.json';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../../environments/environment.dev';
 @Injectable({
     providedIn: 'root'
 })
 export class ProjectsService {
+    private readonly PATH = environment.apiUrl + '/projects'
+    constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) {}
+    getProjects(): Observable<any> {
+        return this.http.get(this.PATH);
+    }
+    getProject(id: string): Observable<any> {
+        return this.http.get(this.PATH + '/' + id);
+    }
+    deleteProject(id: string): Observable<any> {
+        return this.http.delete(this.PATH + '/' + id);
+    }
+    createProject(project: Partial<Project>): Observable<any> {
+        return this.http.post(this.PATH, project);
+    }
+    uploadMdFile(file: File, id?: string): Observable<any> {
+        if (!id) return of({ success: false });
 
-    getProjects(): Observable<Project[]> {
-        const projects = (projectsJson as any[]).map(p => ({
-            ...p,
-            createdAt: (new Date(p.createdAt)).toLocaleDateString('pt-BR')
-        }));
-        return of(projects);
+        const formData = new FormData();
+        formData.append('file', file);
+
+        return this.http.post(this.PATH + '/' + id + '/md-file', formData);
     }
-    getProject(id:string): Observable<Project> {
-        const projects = (projectsJson as any[]).map(p => ({
-            ...p,
-            createdAt: (new Date(p.createdAt)).toLocaleDateString('pt-BR')
-        }));
-        const project = projects.find(proj=>proj.id==id);
-        return of(project);
-    }
-    createProject(project: Partial<Project>): Observable<Project> {
-        return of({
-            html:'',
-            name: project.name!,
-            owner: project.owner!,
-            repoLink: project.repoLink!,
-            id: crypto.randomUUID(),
-            createdAt: new Date().toLocaleDateString('pt-BR'),
-            widgetInjected: false
-        });
+    updateProject(project: Partial<Project>,id?:string): Observable<any> {
+        if (!id) return of({ success: false });
+        return this.http.patch(this.PATH+'/'+id, project);
     }
 }

@@ -4,6 +4,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LoginComponent } from './sections/login/login.component';
 import { ForgotPasswordComponent } from './sections/forgot-password/forgot-password.component';
 import { RegisterComponent } from './sections/register/register.component';
+import { AuthService } from '../core/services/auth.service';
 
 type AuthSection = 'Login' | 'Cadastro' | 'Esqueci minha senha';
 
@@ -12,14 +13,9 @@ type AuthSection = 'Login' | 'Cadastro' | 'Esqueci minha senha';
   imports: [ CommonModule, LoginComponent, RegisterComponent, ForgotPasswordComponent],
   templateUrl: './auth.component.html',
 })
-export class AuthComponent implements OnInit {
-    private platformId = inject(PLATFORM_ID);
-    constructor(private router:Router){}
-    ngOnInit(): void {
-        if (isPlatformBrowser(this.platformId)&&localStorage.getItem('token')) {
-            this.router.navigate(['/dashboard/projects']);
-        }
-    }
+export class AuthComponent  {
+    constructor(){}
+
     currentSection: AuthSection = 'Login';
     sections: AuthSection[] = ['Login', 'Cadastro', 'Esqueci minha senha'];
     switchSection(section: AuthSection) {

@@ -1,10 +1,10 @@
 <main class="h-screen overflow-hidden">
-  <iframe 
-    id="sandbox"
-    class="w-full h-screen border-none">
+  <iframe id="sandbox" class="w-full h-screen border-none">
   </iframe>
-  <app-floating-chat
-    (promptSubmit)="sendPrompt($event)"
-    #floatingChat>
+  <app-floating-chat (updatedProject)="saveHtml($event)" (promptSubmit)="sendPrompt($event)" #floatingChat>
   </app-floating-chat>
 </main>
+<div class="card flex justify-center max-w-36">
+  <p-toast position="bottom-center" [style]="{ width: '90vw', maxWidth: '360px' }">
+  </p-toast>
+</div>

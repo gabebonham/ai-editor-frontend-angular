@@ -8,12 +8,12 @@ import { AuthService } from '../../../core/services/auth.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
-    selector: 'app-dashboard-sidebar',
+    selector: 'app-dashboard-sidemenu',
     imports: [DrawerModule, ButtonModule, MatIconModule, RouterModule],
-    templateUrl: './dashboard-sidebar.component.html',
+    templateUrl: './dashboard-sidemenu.component.html',
     standalone: true,
 })
-export class DashboardSidebarComponent implements OnInit {
+export class DashboardSideMenuComponent implements OnInit {
     isMobile = false;
 
     readonly avatarColor: string;

@@ -1,8 +1,13 @@
-<div>
-    <main class="bg-gray-background">
-        <app-dashboard-header />
-        <div class="pt-13">
-            <router-outlet />
+<div class="">
+    <main class="bg-gray-background ">
+        <app-dashboard-header [username]="loadUsername()" />
+        <div class="flex pt-13">
+            <div class="w-2/12 ">
+                <app-dashboard-sidemenu  />
+            </div>
+            <div class="w-10/12">
+                <router-outlet />
+            </div>
         </div>
     </main>
 </div>
